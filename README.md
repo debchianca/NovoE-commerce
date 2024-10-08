@@ -9,7 +9,7 @@ HTML5, CSS3, Bootstrap 5, Java Script, Google Fonts e Font Awesome, todas estas,
 
 Para configurar o projeto localmente: 
 Clone o repositório:
-git clone [https://github.com/username/ecommerce-project.git](https://github.com/debchianca/NovoE-commerce.git)
+git clone https://github.com/debchianca/NovoE-commerce.git
 cd ecommerce-project
 
 Abra o arquivo index.html:
