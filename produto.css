@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+:root {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Ajustes globais */
+body, html {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #ffffff; /* Cor de fundo branco */
+}
+
+body {
+    color: #333;
+}
+
+/* Estilo da Navbar */
+.navbar {
+    background-color: #d63384; /* Mesma cor de fundo da navbar da página inicial */
+    padding: 5px 0;
+    height: auto;
+}
+
+.navbar-brand img {
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-link {
+    color: #ffffff !important;
+}
+
+/* Estilo das colunas de produto */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Alinha para a esquerda */
+    margin-bottom: 20px;
+}
+
+.col-lg-6 {
+    margin-bottom: 20px;
+}
+
+/* Ajustes na imagem do produto */
+#produto-imagem {
+    width: 80%; /* Diminuindo a largura da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    object-fit: cover;
+    border-radius: 10px; /* Mantém a borda arredondada para consistência */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 20px; /* Espaçamento à esquerda */
+}
+
+/* Estilo do título e descrição */
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #d63384; /* Mesma cor usada no botão e na navbar */
+    text-align: left; /* Alinha o título à esquerda */
+}
+
+p {
+    color: #555;
+    font-size: 1rem;
+    text-align: justify; /* Justifica o texto */
+}
+
+/* Ajustar o padding do container para dar mais espaço no layout */
+.container {
+    padding-top: 40px;
+    padding-left: 20px; /* Adiciona padding à esquerda para o conteúdo */
+}
+
+.cores-container {
+    display: flex; /* Usando flexbox para alinhar os círculos horizontalmente */
+    gap: 10px; /* Espaço entre as bolinhas */
+    margin-top: 10px; /* Espaço acima da seção de cores */
+}
+
+.cor-bola {
+    width: 25px; /* Largura da bolinha */
+    height: 25px; /* Altura da bolinha */
+    border-radius: 50%; /* Torna o elemento circular */
+    display: inline-block; /* Permite que a bolinha apareça ao lado de outros elementos */
+    border: 2px solid #ddd; /* Borda sutil para as bolinhas */
+    cursor: pointer; /* Muda o cursor ao passar sobre as bolinhas */
+    transition: transform 0.3s; /* Transição para o efeito de hover */
+}
+
+.cor-bola:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+
+/* Estilo dos botões */
+.btn-primary {
+    background-color: #d63384;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #ff0080;
+}
+
+.btn-purple {
+    background-color: #d63384;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-purple:hover {
+    background-color: #b90b5c;
+}
+
+/* Estilo da descrição dos produtos */
+.card-body {
+    text-align: left;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+.card-title {
+    color: #d63384;
+}
+
+.card-text {
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Estilo do Container principal */
+.container {
+    padding-top: 40px;
+}
+
+.col-lg-5 {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do Rodapé */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #d63384;
+    color: white;
+    font-size: 14px;
+}

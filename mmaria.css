@@ -1,0 +1,110 @@
+/* Geral */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #f8f9fa; /* Cor de fundo da navbar */
+}
+
+/* Formulário de busca */
+.search-container {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.search-input {
+    width: 300px; /* Largura do campo de busca */
+}
+
+.search-button {
+    background-color: transparent; /* Botão de busca transparente */
+    border: none; /* Sem borda */
+}
+
+/* Carrossel */
+.carousel-container {
+    margin: 20px 0; /* Margem acima e abaixo do carrossel */
+}
+
+/* Seções */
+.section {
+    padding: 50px 0; /* Espaçamento superior e inferior */
+    text-align: center; /* Centralizar texto nas seções */
+    margin-bottom: 40px; /* Adiciona espaço embaixo da seção dos produtos */
+}
+
+.row-cols-1.row-cols-md-4 .col {
+    margin-bottom: 20px; /* Ajusta o espaço entre as linhas */
+}
+
+/* Cards */
+.card {
+    width: 220px; /* Ajusta a largura do card */
+    height: 350px; /* Ajusta a altura do card para ser mais longo */
+    margin: 10px; /* Margem para espaçamento */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adiciona sombra ao card */
+    border-radius: 5px; /* Bordas arredondadas */
+    overflow: hidden; /* Esconde partes do conteúdo que excedem os limites do card */
+    background-color: #fff; /* Cor de fundo do card */
+}
+
+.card-img-top {
+    width: 100%; /* Faz a imagem ocupar toda a largura do card */
+    height: auto; /* Mantém a proporção da imagem */
+    max-height: 150px; /* Limita a altura da imagem */
+}
+
+.card-title {
+    font-size: 1rem; /* Tamanho da fonte do título */
+    margin-bottom: 5px; /* Margem inferior para espaçamento */
+}
+
+.card-price {
+    font-size: 1rem; /* Tamanho da fonte do preço */
+    color: #000; /* Cor do texto do preço */
+    margin: 5px 0; /* Margem para espaçamento */
+}
+
+.card-body {
+    text-align: center; /* Centraliza o texto */
+}
+
+.custom-card {
+    width: 300px; /* Ajuste a largura para o tamanho desejado */
+    margin: 0 auto; /* Centraliza o card horizontalmente */
+}
+
+.btn {
+    font-size: 0.9rem; /* Tamanho da fonte do botão */
+    padding: 10px; /* Ajusta o padding do botão */
+}
+
+.btn-primary {
+    background-color: #d63384; /* Cor do botão principal */
+}
+
+.favoritado {
+    color: red;
+}
+
+/* Footer */
+footer {
+    background-color: #d63384; /* Mesma cor da navbar */
+    color: white;
+    padding: 20px 0;
+}
+
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .search-input {
+        width: 100%; /* Largura total em telas menores */
+    }
+
+    .carousel-container img {
+        height: auto; /* Ajustar altura das imagens do carrossel */
+    }
+}

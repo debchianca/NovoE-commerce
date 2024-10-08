@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Seu CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="./imagens/icon.png" alt="Logotipo do Site" style="height: 50px;">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home"></i> Início
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cadastro.html">
+                                <i class="fas fa-user"></i> Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="favoritos.html">
+                                <i class="fas fa-heart"></i> Favoritos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="carrinho.html">
+                                <i class="fas fa-shopping-cart"></i> Carrinho
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        <h3>Meu carrinho 🛍️</h3>
+        <div class="card">
+            <table class="table table-hover shopping-cart-wrap">
+                <thead class="text-muted">
+                    <tr>
+                        <th scope="col">Produto</th>
+                        <th scope="col" width="120">Quantidade</th>
+                        <th scope="col" width="120">Preço</th>
+                        <th scope="col" width="200" class="text-right">Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="produtos">
+                    <!-- Produtos serão inseridos aqui dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="text-right mt-4">
+            <a href="pagamento.html" class="btn btn-success">Finalizar Compra</a>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('produtos').innerHTML = "";
+            carrinho.forEach(item => {
+                getData(item.id, item.quantidade);
+            });
+        });
+
+        function getData(id, quantidade) {
+            fetch(`http://localhost:3000/produtos/${id}`)
+                .then(response => response.json())
+                .then(data => renderizar(data, quantidade))
+                .catch(error => console.error('Erro ao buscar produto:', error));
+        }
+
+        function renderizar(response, quantidade) {
+            const tbody = document.getElementById('produtos');
+            tbody.innerHTML += `
+                <tr>
+                    <td>
+                        <figure class="media">
+                            <div class="img-wrap">
+                                <img src="${response.imgSrc}" class="img-thumbnail img-sm">
+                            </div>
+                            <figcaption class="media-body">
+                                <h6 class="title text-truncate">${response.titulo}</h6>
+                            </figcaption>
+                        </figure>
+                    </td>
+                    <td>
+                        <input type="number" value="${quantidade}" min="1" max="10" class="form-control" onchange="atualizarQuantidade(this, ${response.id})">
+                    </td>
+                    <td>
+                        <div class="price-wrap">
+                            <var class="price">R$ ${(response.preco * quantidade).toFixed(2)}</var>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <a href="#" class="btn btn-outline-danger" onclick="remover(${response.id})">× Remover</a>
+                    </td>
+                </tr>
+            `;
+        }
+
+        function atualizarQuantidade(el, id) {
+            carrinho.forEach(item => {
+                if (item.id == id) {
+                    item.quantidade = Number(el.value);
+                }
+            });
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            recarregarCarrinho();
+        }
+
+        function remover(id) {
+            const index = carrinho.findIndex(item => item.id == id);
+            if (index !== -1) {
+                carrinho.splice(index, 1);
+            }
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            recarregarCarrinho();
+        }
+
+        function recarregarCarrinho() {
+            document.getElementById('produtos').innerHTML = "";
+            carrinho.forEach(item => {
+                getData(item.id, item.quantidade);
+            });
+        }
+    </script>
+
+</body>
+</html>

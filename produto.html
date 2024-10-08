@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enchanted Beauty</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Seu CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Adicionando estilos específicos para as bolinhas de cor */
+        .cores-container {
+            display: flex; /* Usando flexbox para alinhar os círculos horizontalmente */
+            gap: 10px; /* Espaço entre as bolinhas */
+            margin-top: 10px; /* Espaço acima da seção de cores */
+        }
+
+        .cor-bola {
+            width: 25px; /* Largura da bolinha */
+            height: 25px; /* Altura da bolinha */
+            border-radius: 50%; /* Torna o elemento circular */
+            display: inline-block; /* Permite que a bolinha apareça ao lado de outros elementos */
+            border: 2px solid #ddd; /* Borda sutil para as bolinhas */
+            cursor: pointer; /* Muda o cursor ao passar sobre as bolinhas */
+            transition: transform 0.3s; /* Transição para o efeito de hover */
+        }
+
+        .cor-bola:hover {
+            transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="./imagens/icon.png" alt="Logotipo do Site" style="height: 50px;"> <!-- Apenas o ícone -->
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home"></i> Início
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cadastro.html">
+                                <i class="fas fa-user"></i> Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="favoritos.html">
+                                <i class="fas fa-heart"></i> Favoritos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="carrinho.html">
+                                <i class="fas fa-shopping-cart"></i> Carrinho
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <img id="produto-imagem" alt="Produto" class="img-fluid" style="margin-top: 100px; margin-left: 0; width: 80%;">
+            </div>
+            <div class="col-lg-5">
+                <h2 id="titulo"></h2>
+                <p class="lead" id="linha"></p>
+                <p style="text-align: justify;" id="descricao"></p>
+                <p>Marca: <span id="marca"></span></p>
+                <p>Categoria: <span id="categoria"></span></p>
+                <p>Cores:</p> 
+                <div id="cores" class="cores-container"></div>
+                <p>R$ <span id="preco"></span></p>
+                <button class="add-to-cart btn btn-primary btn-block mt-3" id="add-to-cart">Comprar Agora</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const produtoId = urlParams.get('id');
+            
+            fetch('http://localhost:3000/produtos')
+                .then(response => response.json())
+                .then(produtos => {
+                    const produto = produtos.find(p => p.id == produtoId); // Encontre o produto pelo ID
+                    if (produto) {
+                        document.getElementById('titulo').innerText = produto.titulo;
+                        document.getElementById('linha').innerText = produto.linha; // Supondo que você tenha um campo 'linha' no JSON
+                        document.getElementById('descricao').innerText = produto.descricao; // Certifique-se de que este campo existe
+                        document.getElementById('produto-imagem').src = produto.imgSrc;
+                        document.getElementById('marca').innerText = produto.marca; // Certifique-se de que este campo existe
+                        document.getElementById('categoria').innerText = produto.categoria; // Certifique-se de que este campo existe
+
+                        // Adicionando as cores ao elemento de cores
+                        const coresContainer = document.getElementById('cores');
+                        produto.cores.forEach(cor => {
+                            const corBola = document.createElement('span');
+                            corBola.className = 'cor-bola';
+                            corBola.style.backgroundColor = cor; // Define a cor de fundo da bolinha
+                            coresContainer.appendChild(corBola);
+                        });
+
+                        document.getElementById('preco').innerText = produto.preco;
+                    } else {
+                        console.error('Produto não encontrado');
+                    }
+                })
+                .catch(error => console.error('Erro ao buscar produtos:', error));
+        });
+
+        // Função para buscar produtos do db.json
+        async function carregarProdutos() {
+            try {
+                const response = await fetch('db.json'); // Verifique se o caminho está correto
+                const data = await response.json();
+                const produtosContainer = document.getElementById('produtos-container');
+
+                // Filtrar e pegar os 8 produtos em oferta
+                const produtosEmOferta = data.produtos.filter(produto => produto.oferta).slice(0, 8);
+
+                // Criar elementos para os produtos
+                produtosEmOferta.forEach(produto => {
+                    const produtoDiv = document.createElement('div');
+                    produtoDiv.className = 'col-md-3 mb-4'; // 4 produtos por linha em telas grandes
+                    produtoDiv.innerHTML = `
+                        <div class="card">
+                            <img src="${produto.imagem}" class="card-img-top" alt="${produto.nome}">
+                            <div class="card-body">
+                                <h5 class="card-title">${produto.nome}</h5>
+                                <p class="card-text">Preço: R$${produto.preco}</p>
+                                <a href="produto.html?id=${produto.id}" class="btn btn-primary">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    `;
+                    produtosContainer.appendChild(produtoDiv);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar produtos:', error);
+            }
+        }
+
+        // Chamar a função ao carregar a página
+        window.onload = carregarProdutos;
+    </script>  
+    
+</body>
+</html>

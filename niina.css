@@ -1,0 +1,267 @@
+/* ========== Global Styles ========== */
+body, html {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 10px;
+}
+
+/* ========== Navbar ========== */
+.navbar {
+    background-color: #d63384;
+    padding: 5px 0;
+    height: auto;
+}
+
+.navbar-brand {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-link {
+    color: #ffffff !important;
+}
+
+.navbar-collapse {
+    justify-content: center;
+}
+
+/* ========== Search Bar ========== */
+.search-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background-color: #ffffff;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    border: 1px solid #e83e8c;
+    padding: 5px 8px;
+    width: 200px;
+    outline: none;
+}
+
+.search-button {
+    background-color: #d63384;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    font-size: small;
+}
+
+.search-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.search-button i {
+    font-size: 16px;
+}
+
+/* ========== Main Container ========== */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.main-container > .container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 15px;
+}
+
+/* ========== Product Cards ========== */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgb(255, 255, 255);
+    transition: transform 0.3s ease-in-out;
+    min-height: 400px;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #d63384;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.card-title::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 2px;
+    background: #d63384;
+    margin: 4px auto 0;
+}
+
+.card-text {
+    text-align: center;
+}
+
+/* ========== Button ========== */
+.btn-primary {
+    background-color: #d63384;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #ff0080;
+    border-color: #d63384;
+    color: #fff;
+}
+
+/* ========== Product Layout ========== */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col-md-3 {
+    flex: 1 1 calc(25% - 20px);
+    max-width: 25%;
+    margin: 10px;
+}
+
+/* ========== Carousel ========== */
+.carousel-container {
+    width: 95%;
+    margin: 0 auto;
+    padding: 0 10px;
+    max-width: 1200px;
+}
+
+.carousel-control {
+    background-color: #ffffff;
+    opacity: 0.5;
+    transition: opacity .15s ease;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-size: 100%, 100%;
+    opacity: 0.5;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: transparent;
+    border: none;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+.carousel-transition {
+    transition: transform 0.6s ease-in-out;
+}
+
+/* ========== Icons (Fluid Icons) ========== */
+.icons-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    margin-top: 20px;
+}
+
+.icon {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: none;
+}
+
+.icon h2 {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #b90b5c;
+    text-align: center;
+}
+
+/* ========== Categories Section ========== */
+#categorias {
+    padding-bottom: 80px;
+}
+
+#categorias .container {
+    max-width: 100%;
+    padding: 0 15px;
+}
+
+#categorias .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+#categorias .col-lg-2 {
+    flex: 1;
+    max-width: 18%;
+    margin: 0 5px;
+}
+
+/* ========== Footer ========== */
+footer {
+    text-align: center;
+}

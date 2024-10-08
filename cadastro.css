@@ -1,0 +1,102 @@
+/* ========== Navbar ========== */
+.navbar {
+    background-color: #d63384;
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; /* Permite que o logotipo ocupe espaço disponível */
+}
+
+.logo-icon {
+    height: 40px; /* Altura do logotipo */
+    filter: brightness(0) invert(1); /* Inverte a cor do logotipo, se necessário */
+}
+
+.navbar-nav {
+    display: flex; /* Flexbox para alinhar itens */
+    margin-left: 0; /* Remove margem à esquerda */
+}
+
+.nav-link {
+    color: #ffffff !important;
+}
+
+.navbar-collapse {
+    justify-content: space-between; /* Mantém o espaço entre a marca e os links */
+}
+
+/* ========== Estilo do corpo da página ========== */
+body {
+    background-color: #f8f9fa; /* Fundo suave */
+    font-family: 'Poppins', sans-serif; /* Fonte Poppins */
+    margin: 0; /* Remove margens */
+}
+
+/* ========== Estilo do contêiner do formulário ========== */
+.form-container {
+    background-color: #ffffff; /* Cor de fundo do formulário */
+    padding: 40px; /* Espaçamento interno */
+    border-radius: 15px; /* Cantos arredondados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 400px; /* Largura máxima */
+    margin: 50px auto; /* Centraliza na tela */
+}
+
+/* ========== Estilo do logo ========== */
+.logo img {
+    width: 120px; /* Largura do logo */
+    margin-bottom: 20px; /* Espaçamento abaixo do logo */
+}
+
+/* ========== Estilo dos campos de entrada ========== */
+.form-control {
+    border-radius: 50px; /* Bordas arredondadas */
+    padding: 15px; /* Espaçamento interno */
+    margin-bottom: 15px; /* Espaçamento abaixo */
+    background-color: #f7f7f7; /* Cor de fundo dos campos */
+    border: 1px solid #d63384; /* Borda rosa */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transições suaves */
+}
+
+.form-control:focus {
+    border-color: #d63384; /* Cor da borda ao focar */
+    box-shadow: 0 0 5px rgba(213, 51, 132, 0.5); /* Sombra ao focar */
+}
+
+/* ========== Estilo do botão ========== */
+.btn {
+    border-radius: 50px; /* Bordas arredondadas */
+    padding: 12px 20px; /* Espaçamento interno */
+    background-color: #d63384; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    font-weight: bold; /* Negrito */
+    border: none; /* Remove borda */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background-color 0.3s ease; /* Transição suave para cor de fundo */
+}
+
+.btn:hover {
+    background-color: #c92074; /* Cor do botão ao passar o mouse */
+}
+
+/* ========== Estilo do rodapé ========== */
+footer {
+    margin-top: 20px; /* Espaçamento acima do rodapé */
+    padding: 15px; /* Espaçamento interno do rodapé */
+    background-color: #d63384; /* Cor de fundo do rodapé */
+    color: white; /* Cor do texto do rodapé */
+}
+
+/* ========== Estilo do texto da aba ========== */
+.nav-pills .nav-link {
+    color: #d63384; /* Cor do texto das abas */
+}
+
+.nav-pills .nav-link.active {
+    background-color: #ffffff; /* Cor de fundo da aba ativa */
+    color: #d63384; /* Cor do texto da aba ativa */
+}
